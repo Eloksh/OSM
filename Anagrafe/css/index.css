@@ -1,0 +1,174 @@
+/* Index Page CSS with Bootstrap Integration */
+
+/* Base styles */
+body {
+    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Header section */
+div[align='center'] {
+    padding: 2rem 0;
+}
+
+h1 {
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 2.2rem;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+    color: #34495e;
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    max-width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Welcome message */
+h2:first-of-type {
+    color: #27ae60;
+    font-weight: 600;
+    animation: fadeIn 1s ease-out;
+    padding: 0.5rem 1rem;
+    background-color: rgba(39, 174, 96, 0.1);
+    border-radius: 8px;
+    display: inline-block;
+}
+
+/* Flag styling */
+div[align='center'] img[src*="bandiera.png"] {
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+div[align='center'] img[src*="bandiera.png"]:hover {
+    transform: scale(1.05);
+}
+
+/* Main screenshot */
+div[align='center'] img[src*="schermata.jpg"] {
+    max-width: 90%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+div[align='center'] img[src*="schermata.jpg"]:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Container styling for content sections */
+.container-fluid {
+    max-width: 1400px;
+    padding: 0 2rem;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.1rem;
+    }
+    
+    div[align='center'] img[src*="bandiera.png"] {
+        width: 150px;
+        height: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    div[align='center'] {
+        padding: 1rem 0;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+    }
+    
+    h2 {
+        font-size: 1rem;
+    }
+    
+    div[align='center'] img[src*="bandiera.png"] {
+        width: 120px;
+        height: auto;
+    }
+}
+
+/* Bootstrap compatibility enhancements */
+.btn {
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}

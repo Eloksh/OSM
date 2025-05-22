@@ -1,0 +1,10 @@
+{
+    "newpoint":"Aggiungi punto",
+    "editpoint":"Modifica",
+    "title":"Mappa di Nague",
+    "center": [11.9521080,-15.4868877],
+    "zoom":14,
+    "zoomto":15,
+    "tags": ["NORD","SUD", "OVEST"],
+    "datasource":"points.php"
+}

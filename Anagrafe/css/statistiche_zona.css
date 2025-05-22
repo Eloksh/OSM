@@ -1,0 +1,113 @@
+/* statistiche_zona.css */
+
+.stats-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+}
+
+.navbar-custom {
+    padding: 15px 0;
+}
+
+/* Centrare il form nella card */
+.card-body {
+    display: flex;
+    justify-content: center;
+}
+
+.row.g-3 {
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Ridimensionare le select */
+select#valore.form-select,
+select#zona_richiesta.form-select {
+    width: 200px;
+    margin: 0 auto;
+}
+
+/* Personalizzazione dell'header statistiche */
+.card-header {
+    background-color: #0d6efd !important;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+}
+
+/* Centralizzare il pulsante Dettaglio Statistiche */
+.d-flex.justify-content-between {
+    justify-content: center !important;
+}
+
+/* Stile per il bottone principale */
+.btn-primary {
+    padding: 10px 20px;
+    font-weight: 500;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Modifiche per replicare il layout nell'immagine */
+.form-floating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Etichette sopra i campi select */
+.form-floating label {
+    position: static;
+    transform: none;
+    padding: 0;
+    margin-bottom: 8px;
+    color: #495057;
+    font-weight: 500;
+}
+
+/* Modificare lo stile del form per corrispondere all'immagine */
+.form-floating > .form-select {
+    height: calc(3.5rem + 2px);
+    line-height: 1.25;
+    padding: 0.5rem 1rem;
+}
+
+/* Spaziatura corretta per il titolo */
+h2.text-center {
+    margin: 10px 0;
+    font-size: 1.8rem;
+}
+
+/* Stile specifico per il pulsante "Visualizza statistiche" */
+.btn-primary i {
+    margin-right: 8px;
+    margin-top: 50px;
+}
+button.btn.btn-primary{
+    margin-top: 20px;
+}
+/* Migliorare la visibilità delle etichette di selezione */
+#zona_richiesta, #valore {
+    font-weight: 500;
+}
+
+/* Aggiungere stile al contenitore principale */
+.container.py-4 {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.card-header.bg-primary.text-white{
+    margin-top: 10px;
+}

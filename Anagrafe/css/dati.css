@@ -1,0 +1,22 @@
+.chart-container {
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    background-color: #fff;
+}
+.stats-header {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #dee2e6;
+}
+.action-buttons {
+    margin: 20px 0;
+}
+.btn-stat {
+    margin-right: 10px;
+}
+.card-header.bg-primary.text-white{
+    margin-top: 5px;
+}

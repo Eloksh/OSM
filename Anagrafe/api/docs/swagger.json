@@ -1,0 +1,88 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Persone",
+    "version": "1.0.0",
+    "description": "API REST panagrafica nt'changue: per cercare persone per nominativo."
+  },
+  "servers": [
+    {
+     "url": "http://localhost/OSM/Anagrafe/api"
+    }
+  ],
+  "paths": {
+    "/persone.php": {
+      "get": {
+        "summary": "Ricerca persone per nominativo",
+        "parameters": [
+          {
+            "name": "nominativo",
+            "in": "query",
+            "description": "Parte del nome della persona da cercare",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista persone trovate",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ID": {
+                        "type": "integer"
+                      },
+                      "NOMINATIVO": {
+                        "type": "string"
+                      },
+                      "SESSO": {
+                        "type": "string"
+                      },
+                      "MATRICOLA_STUD": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "DATA_NASCITA": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                      },
+                      "DATA_MORTE": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                      },
+                      "DATA_INIZIO_VAL": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                      },
+                      "DATA_FINE_VAL": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parametro mancante"
+          },
+          "500": {
+            "description": "Errore interno del server"
+          }
+        }
+      }
+    }
+  }
+}
+

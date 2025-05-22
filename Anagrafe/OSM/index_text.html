@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<!--
+-- index.html: Visualizza su OSM le case che hanno id_osm valorizzato
+-- viene richiamato da db2geojson.php che prepara il file points.geojson a partire dal DB
+--
+-- legge da points.geojson le case del villaggio e le visualizza sulla mappa, indicandone i dati
+-- Eliminato ins/mod/del, per ora solo visualizzazione dati
+--
+-- Si ringrazia
+- Amerigo has been developed by Luca Tringali 
+- TRINGALINVENT@libero.it https://github.com/zorbaproject/amerigo 
+- Riveduto e modificato by A. Carlone
+-- Convertito da OpenLayers a Leaflet
+-->
+<html>
+<head>
+  <title>Mappa delle case su OSM e associate con id_OSM sul database gestionale</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/OSM/Anagrafe/css/mappa.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.9/leaflet-search.min.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto">
+  <style>
+
+  </style>
+</head>
+<body>
+  <div class="title-container">
+    <b>Mappa delle case:</b> click sulla casa per modificare, doppio click per mappare una nuova casa
+  </div>
+
+  <div id="map"></div>
+  <div id="controls"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.9/leaflet-search.min.js"></script>
+
+  <script>
+    (function (win, doc) {
+      'use strict';
+      function getJSON(url) {
+        var resp;
+        var xmlHttp;
+
+        resp = '';
+        xmlHttp = new XMLHttpRequest();
+
+        if (xmlHttp != null) {
+          xmlHttp.open("GET", url, false);
+          xmlHttp.send(null);
+          resp = xmlHttp.responseText;
+        }
+
+        return resp;
+      }
+
+      var settings;
+      var settingsstring = "";
+      settingsstring = getJSON("settings.json");
+
+      if (settingsstring == '') {
+        settingsstring = '{' +
+          '"newpoint":"Aggiungi punto",' +
+          '"editpoint":"Modifica",' +
+          '"title":"Mappa di Nague",' +
+          '"center": [11.9521080, -15.4868877],' +
+          '"zoom":14,' +
+          '"zoomto":15,' +
+          '"tags": ["NORD","SUD", "OVEST"],' +
+          '"datasource":"points.php"' +
+          '}';
+      }
+
+      settings = JSON.parse(settingsstring);
+      document.title = settings.title;
+
+      // Define your target coordinates
+      var targetCoords = [11.9521080, -15.4868877]; // [latitude, longitude]
+
+      // Override the settings center with your target coordinates
+      settings.center = targetCoords;
+
+      // Initialize the map centered on your coordinates
+      var map = L.map('map').setView(targetCoords, settings.zoomto);
+
+      // Add the base tile layer (OpenStreetMap)
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      // Create layer groups for each tag zone
+      var layers = {};
+      settings.tags.forEach(function(tag) {
+        layers[tag] = L.layerGroup().addTo(map);
+      });
+
+      // Create a temporary layer for new points
+      var tempLayer = L.layerGroup().addTo(map);
+
+      // Create a custom icon for houses
+      function createHouseIcon(color, text) {
+        return L.divIcon({
+          className: 'casa-marker',
+          html: `<div style="width: 30px; height: 30px; background-image: url('/OSM/Anagrafe/img/casa2.png'); 
+                 background-size: cover; text-align: center; line-height: 30px; color: ${color}; 
+                 background-color: transparent; font-weight: bold;">${text}</div>`,
+          iconSize: [50, 50],
+          iconAnchor: [25, 25]
+        });
+      }
+
+      // Aggiunge un  marker Per indicare il luogo in cui siamo
+      var yourLocationMarker = L.marker(targetCoords, {
+        icon: createHouseIcon('red', 'NAGUE')
+      }).addTo(map);
+      
+      // fa "pulsare" il marker per indicare il luogo in cui siamo
+      yourLocationMarker.bindPopup("<b>Ti Trovi Qui!</b><br>Coordinates: " + targetCoords[0] + ", " + targetCoords[1]).openPopup();
+
+      // Carica il GeoJSON data per ogni tag
+      settings.tags.forEach(function(tag) {
+        fetch(`${settings.datasource}?tag=${tag}`)
+          .then(response => response.json())
+          .then(data => {
+            L.geoJSON(data, {
+              pointToLayer: function(feature, latlng) {
+                let myColor = 'red';  // Default per OVEST
+                if (feature.properties.tag === 'NORD') { //nord VERDE
+                  myColor = 'green';
+                } else if (feature.properties.tag === 'SUD') { //SUD GIALLO
+                  myColor = 'yellow';
+                }
+                
+                return L.marker(latlng, {
+                  icon: createHouseIcon(myColor, feature.properties.name)
+                }).on('click', function() {
+                  showPointInfo(latlng, feature.properties.name, feature.properties.description, "", feature.properties.verified);
+                });
+              }
+            }).addTo(layers[tag]);
+          });
+      });
+
+      // Create checkboxes for layer controls
+      var controlshtml = "visualizza case della zona: ";
+      settings.tags.forEach(function(tag, index) {
+        controlshtml += `<input type="checkbox" class="controlCheckbox" id="${tag}" value="${tag}" checked>${tag}`;
+      });
+
+      doc.getElementById('controls').innerHTML = controlshtml;
+      
+      // Add event listeners to checkboxes
+      var inputElements = document.getElementsByClassName('controlCheckbox');
+      for (var i = 0; i < inputElements.length; i++) {
+        inputElements[i].addEventListener("click", function(evt) {
+          var tag = evt.target.value;
+          if (evt.target.checked) {
+            map.addLayer(layers[tag]);
+          } else {
+            map.removeLayer(layers[tag]);
+          }
+        });
+      }
+
+      // Function to display point information in a popup
+      function showPointInfo(latlng, pointname, pointdescription, pointaddress, pointverified) {
+        var lon = latlng.lng;
+        var lat = latlng.lat;
+        
+        // Prepare edit URL
+        var urledit = `javascript:window.open('edit_ins.php?ID=${pointname}&lon=${lon}&lat=${lat}','${settings.editpoint}','scrollbars=no,resizable=yes, width=200,height=500,status=no,location=no,toolbar=no')`;
+
+        // Build popup content
+        var text = '';
+        if (pointname == 'new') {
+          text = text + '<b>associa casa sulla mappa:</b><br>';
+        } else {
+          text = text + '<b>id casa:' + pointname + '</b><br>';
+        }
+        
+        if (pointaddress != '') text = text + pointaddress + '<br>';
+        
+        if (pointdescription != "") {
+          for (var key in pointdescription) {
+            if (typeof pointdescription[key] !== 'function') {
+              text = text + key + ': ' + pointdescription[key] + '<br>';
+            }
+          }
+        }
+        
+        if (pointverified != "") text = text + 'Ultima modifica: ' + pointverified;
+        
+        text = text + '<br><a href="' + urledit + '">' + settings.editpoint + '</a>';
+
+        // Show popup
+        L.popup()
+          .setLatLng(latlng)
+          .setContent(text)
+          .openOn(map);
+
+        // Zoom to point
+        map.setView(latlng, settings.zoomto);
+      }
+
+      // Add search control
+      var searchControl = new L.Control.Search({
+        url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}',
+        jsonpParam: 'json_callback',
+        propertyName: 'display_name',
+        propertyLoc: ['lat', 'lon'],
+        marker: L.circleMarker([0, 0], { radius: 7, color: 'red', fillColor: 'red', fillOpacity: 1 }),
+        autoCollapse: true,
+        autoType: false,
+        minLength: 2,
+        zoom: settings.zoomto,
+        textPlaceholder: 'Cerca ...',
+        filterData: function(text, records) {
+          return records.slice(0, 5); // Limit to 5 results
+        }
+      });
+
+      searchControl.on('search:locationfound', function(e) {
+        var latlng = L.latLng(e.latlng.lat, e.latlng.lng);
+        setTimeout(function() {
+          showPointInfo(latlng, "new", "", e.text, "");
+        }, 1000);
+      });
+
+      map.addControl(searchControl);
+
+      // Handle double-click to add a new point
+      map.on('dblclick', function(e) {
+        tempLayer.clearLayers();
+        var marker = L.marker(e.latlng, {
+          icon: createHouseIcon('blue', 'new')
+        }).addTo(tempLayer);
+        
+        showPointInfo(e.latlng, "new", "", "", "");
+      });
+
+    })(window, document);
+  </script>
+</body>
+</html>

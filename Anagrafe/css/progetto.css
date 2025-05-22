@@ -1,0 +1,136 @@
+/* Project.css - Bootstrap Compatible CSS */
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --light-bg: #f8f9fa;
+    --dark-text: #343a40;
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+}
+
+/* Card styling */
+.project-card, .article-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover, .article-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Headings */
+h1.display-4 {
+    color: var(--secondary-color);
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h1.display-4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+h3 {
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+/* Video container */
+.video-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+iframe {
+    border-radius: 8px;
+}
+
+/* Article links */
+.article-links {
+    justify-content: center;
+}
+
+.article-img {
+    height: 120px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.article-link {
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.article-link:hover .article-img {
+    transform: scale(1.05);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .article-img {
+        height: 100px;
+    }
+}
+
+@media (max-width: 576px) {
+    h1.display-4 {
+        font-size: 2rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+    
+    .article-img {
+        height: 80px;
+    }
+}
+
+/* Bootstrap button enhancement */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+/* Add animation for cards */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.article-card {
+    animation-delay: 0.3s;
+}

@@ -12,14 +12,14 @@
     transform: translateY(-5px);
 }
 
-.navbar-custom {
-    padding: 15px 0;
-}
-
 /* Centrare il form nella card */
 .card-body {
-    display: flex;
+    display:flex;
     justify-content: center;
+}
+
+div.form-group{
+    margin-top:15px;
 }
 
 .row.g-3 {
@@ -94,6 +94,7 @@ h2.text-center {
     margin-right: 8px;
     margin-top: 50px;
 }
+
 button.btn.btn-primary{
     margin-top: 20px;
 }

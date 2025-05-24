@@ -14,7 +14,6 @@
 *** vis_persona_sto.php  (caso di visualizzazione storico della persona)
 ***  9/4/2020: A.Carlone: visualizzazione deceduti
 *** 15/3/2020: A.Carlone: migliorata gestione zone e ordinamento su id e nome moranca
-*** 27/02/20 : Gobbi: Implementazione della gestione multilingue
 *** 2/2/2020: A. Carlone: prima implementazione
 */
 $config_path = __DIR__;
@@ -23,9 +22,6 @@ require_once $util1;
 setup();
 isLogged("gestore");
 unsetPag(basename(__FILE__)); 
-$lang=isset($_SESSION['lang'])?$_SESSION['lang']:"ITA";
-$jsonFile=file_get_contents("../gestione_lingue/translations.json");//Converto il file json in una stringa
-$jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la salvo in un oggetto
 ?>
 
 <html>
@@ -55,7 +51,6 @@ $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la sal
         });
     </script>
 
-
     <?php
     $util2 = $config_path .'/../db/db_conn.php';
     require_once $util2;
@@ -75,7 +70,6 @@ $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la sal
         else
             $id_casa = "tutte"; 
 
-
         if (isset($_SESSION['decessi'])) 
         {
             $_SESSION['old_decessi'] =  $_SESSION['decessi'];
@@ -94,9 +88,6 @@ $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la sal
             else
                 $decessi = 'tutti'; 
         }
-
-        // echo "1.decessi=". $decessi;
-        // echo "1.SESSION[decessi]=". $_SESSION['decessi'];
 
         if (isset($_SESSION['ord_p']))		//ordinamento ASC/DESC
             $ord = $_SESSION['ord_p'];
@@ -136,19 +127,16 @@ $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la sal
             if ((isset($_POST['ricerca'])) && 
                 ($_POST['nome'] != "" ))// se è stata richiesta la ricerca, recupera la pagina da visualizzare
             {
-                //			echo "<br>fatta ricerca";
                 $pag = get_first_pag($conn, $_POST['nome'],$id_casa, $decessi, $cod_zona, $ord, $campo); 
                 $ricerca = true;
-                // 		    echo " <br>dopo get_first_pag pag=". $pag;
             }		   
             ?>
-            <!--     </div>-->
-            <?php
 
+            <?php
             /*
-*** 15/3/2020: Se viene richiamato da gest_case.php (mostra persone della casa) 
+*** Se viene richiamato da gest_case.php (mostra persone della casa) 
 */
-            // vedo se arriva da gest_casa.php o da  menu persone ";
+            // vedo se arriva da gest_casa.php o da  menu persone
             if (isset($_POST['id_casa']))
             {
                 $id_casa = $_POST['id_casa']; 
@@ -160,7 +148,7 @@ $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la sal
             if( isset($_SESSION['id_casa']) &&  ($_SESSION['id_casa'] != 'tutte'))		
                 $id_casa =  $_SESSION['id_casa']; 
 
-            // modificato per la gestione corretta della paginazione (A.C. 10/3/2020)
+            // modificato per la gestione corretta della paginazione
             // se $_POST['cod_zona'] valorizzato --> arriva  dall'action form
             // se $_SESSION  valorizzato --> arriva  dal $SERVER[PHP_SELF]
             if (isset($_POST['cod_zona']))
@@ -206,13 +194,10 @@ $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la sal
             if (isset($decessi) && ($decessi == 'no'))
                 $query2 .= " AND p.data_morte IS  NULL";
 
-            //      echo $query2;
-
             $result = $conn->query($query2);
             $row = $result->fetch_array();
             //esiste la count
             $all_rows= $row['cont'];
-
 
             //  definisco il numero totale di pagine
             $all_pages = ceil($all_rows / $x_pag);
@@ -222,10 +207,6 @@ $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la sal
                 $first = ($pag-1) * $x_pag ;
             else 
                 $first = ($pag) * $x_pag ;
-
-            //		 echo "<br>ricerca=".$ricerca;
-            //		 echo "<br>pag=".$pag;
-            //        echo "<br>first=".$first;
 
             if (isset($_POST['cod_zona']))
                 $cod_zona = $_POST['cod_zona'];
@@ -271,9 +252,10 @@ $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la sal
             echo " </form>";
             echo " </div>";
             echo"<a href='ins_persona.php'>Inserimento nuova persona <i class='fa fa-plus-circle fa-2x'></i></a>";
+            
             /*
-		*** caso di richiesto nuovo  ordinamento su campi id o nome
-		*/
+*** caso di richiesto nuovo  ordinamento su campi id o nome
+*/
             if (isset($_SESSION['campo_p']))
                 $campo = $_SESSION['campo_p'];
             else 
@@ -330,8 +312,6 @@ $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la sal
             $query .= " ORDER BY $campo " . $ord ;
             $query .= " LIMIT $first, $x_pag";
 
-            //       echo $query;
-
             $result = $conn->query($query);
 
             $nr = $result->num_rows;
@@ -351,9 +331,6 @@ $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la sal
                 echo "<tr>";  
 
                 //nominativo (con possibilità di ordinamento)
-
-
-
                 if ($ord == "ASC")
                    $myclass = "fa fa-arrow-circle-down";
                 else
@@ -362,27 +339,26 @@ $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la sal
                 echo " <form method='post' action='gest_persone.php'>";
                 echo "<th> nominativo <button class='btn center-block'  name='ord_nominativo'  value='nominativo' type='submit'><i class='".$myclass ."' title ='inverti ordinamento'></i> </button> </th></form>";
 
-
                 //id (con possibilità di ordinamento)
                 echo " <form method='post' action='gest_persone.php'>";
                 echo "<th> id <button class='btn center-block'  name='ord_id'  value='id' type='submit'><i class='".$myclass ."' title ='inverti ordinamento'></i>  </button> </th></form>";
 
-                echo "<th>sesso</th>";//Sesso		
-                echo "<th>data nascita</th>";//Data Nascita
+                echo "<th>sesso</th>";
+                echo "<th>data nascita</th>";
                 if ($vis_decessi)
-                    echo "<th>data decesso</th>";//Data Morte
-                echo "<th>età</th>";//Età
-                echo "<th>ruolo</th>";//Ruolo in famiglia
+                    echo "<th>data decesso</th>";
+                echo "<th>età</th>";
+                echo "<th>ruolo</th>";
                 echo "<th>matricola</th>";
-                echo "<th>casa</th>";//Casa
-                echo "<th>moran&ccedil;a</th>";//Morança
+                echo "<th>casa</th>";
+                echo "<th>moran&ccedil;a</th>";
                 echo "<th>zona </th>";
                 echo "<th>sulla mappa</th>";
-                echo "<th>data inizio val";//Data val
-                echo "<th>".$jsonObj->{$lang."Morance"}[9]."</th>";//Modifica
-                echo "<th>".$jsonObj->{$lang."Morance"}[10]."</th>";//Elimina   
-                echo "<th>".$jsonObj->{$lang."Persone"}[7]."</th>";//Casa  
-                echo "<th>".$jsonObj->{$lang."Morance"}[12]."</th>";//Storico
+                echo "<th>data inizio val</th>";
+                echo "<th>Modifica</th>";
+                echo "<th>Elimina</th>";   
+                echo "<th>Casa</th>";  
+                echo "<th>Storico</th>";
                 echo "</tr>";
 
                 echo "<tr>";
@@ -403,8 +379,6 @@ $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la sal
                     else
                         echo "<td>".date_diff(date_create($row['data_nascita']), 
                                               date_create('today'))->y."</td>";
-
-
 
                     echo "<td>$row[descrizione] ($row[cod_ruolo_pers_fam])</td>";
                     echo "<td>$row[matricola]</td>";
@@ -446,11 +420,8 @@ $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la sal
             require $vis_pag;
 			echo "</div></ul></nav>";
 
-
             $result->free();
             $conn->close();	
-
-
 
 /*
 *** funzione che, a seguito di una nuova ricerca, imposta la prima pagina da visualizzare
@@ -460,18 +431,13 @@ $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la sal
             function get_first_pag($conn, $nominativo, $id_casa, $decessi, $cod_zona, $ord, $campo_ord)
             { 
                 // recupero l'id persona
-
                 $nominativo = utf8_decode($nominativo);
                 $query = "SELECT id id_p FROM persone  WHERE nominativo = '{$nominativo}'";
                 $result = $conn->query($query);
-                //   echo $query;
                 $row = $result->fetch_array();
                 $id = $row['id_p'];
-                //   echo "id=". $id;
                 $result->free();
 
-
-                //echo "2.decessi=". $decessi;
                 $query = "SELECT ";
                 $query .= " p.id, p.nominativo, p.sesso, p.data_nascita, p.data_morte,";
                 $query .= " c.id as id_casa, c.id_moranca,c.nome nome_casa, m.nome nome_moranca,";
@@ -514,32 +480,22 @@ $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la sal
                 }
                 $query .= " ORDER BY $campo_ord " . $ord ;
 
-                //    echo $query;
-
                 $result = $conn->query($query);
                 $cont=$result->num_rows;
-
 
                 $result->free();
 
                 $x_pag = 10;
-
                 $resto = $cont%$x_pag;
 
-                //	 echo "<br>x_pag=", $x_pag;
-                //     echo "<br>cont=", $cont;
-                //     echo "<br>resto=", $resto;
-
-
-                //    echo "<br>intval(abs($cont/$x_pag))=".intval(abs($cont/$x_pag));
                 if ($resto ==0)
                     $pag= intval(abs($cont/$x_pag))-1;
                 else
                     $pag= intval(abs($cont/$x_pag));
-                //     echo "<br>esco da first_pag, pag=", $pag;
+                    
                 return $pag;
             }
             ?>
 
-            </body>
-        </html>
+    </body>
+</html>

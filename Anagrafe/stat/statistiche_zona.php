@@ -25,7 +25,7 @@ isLogged();
         <?php stampaNavbar(); ?>
         
         <div class="container py-4">
-            <div class="d-flex justify-content-center mb-4">
+            <div class="d-flex mb-4" style="justify-content: space-around;">
                 <a href='statistiche.php' class="btn btn-outline-primary d-flex align-items-center">
                     <span class="me-2">Statistiche Generali</span>
                 </a>

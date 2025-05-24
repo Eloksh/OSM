@@ -31,10 +31,11 @@ h2 {
     color: #34495e;
     font-weight: 500;
     font-size: 1.5rem;
-    margin-top: 0.5rem;
-    margin-bottom: 1.5rem;
+    /* margin-top: 0.5rem; */
+    /* margin-bottom: 1.5rem; */
     max-width: 85%;
     margin-left: auto;
+    text-align: center;
     margin-right: auto;
 }
 
@@ -46,7 +47,10 @@ h2:first-of-type {
     padding: 0.5rem 1rem;
     background-color: rgba(39, 174, 96, 0.1);
     border-radius: 8px;
-    display: inline-block;
+    /*Per centrare*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Flag styling */

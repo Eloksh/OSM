@@ -1,101 +1,25 @@
-/* Consolidated CSS for navbar (style1.css + util.css combined) */
-/* This CSS file should be placed at /OSM/Anagrafe/css/navbar-style.css */
-
-/* Base styles */
-body {
-    font-family: 'Raleway', sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
+.chart-container {
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    background-color: #fff;
 }
-
-/* Custom navbar styling with Bootstrap overrides */
-.navbar {
-    padding: 0;
+.stats-header {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #dee2e6;
 }
-
-.navbar-brand {
-    padding: 10px 15px;
-    text-align: center;
-    font-weight: bold;
-    color: white !important;
+.action-buttons {
+    margin: 20px 0;
 }
-
-.navbar-dark .navbar-nav .nav-link {
-    color: white;
-    text-align: center;
-    padding: 10px 15px;
-    transition: background-color 0.3s;
+.btn-stat {
+    margin-right: 10px;
 }
-
-.navbar-dark .navbar-nav .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Dropdown customization */
-.dropdown-menu {
-    background-color: #343a40;
-    border: 1px solid #6c757d;
-}
-
-.dropdown-item {
-    color: white;
-}
-
-.dropdown-item:hover {
-    background-color: #495057;
-    color: white;
-}
-
-/* Icons in navbar */
-.navbar img {
-    display: block;
-    margin: 0 auto;
-}
-
-.navbar i {
-    display: inline-block;
-    margin: 0 2px;
-}
-
-/* Icon only links */
-.nav-item .nav-link img:only-child,
-.nav-item .nav-link i:only-child {
+.card-header.bg-primary.text-white{
     margin-top: 5px;
-    margin-bottom: 5px;
 }
-
-/* Mobile adjustments */
-@media (max-width: 991.98px) {
-    .navbar-collapse {
-        padding: 15px;
-    }
-    
-    .navbar-nav .nav-item {
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .navbar-nav .nav-item:last-child {
-        border-bottom: none;
-    }
-    
-    .navbar-dark .navbar-toggler {
-        border-color: rgba(255,255,255,0.5);
-    }
-    
-    .dropdown-menu {
-        border: none;
-        padding-left: 15px;
-    }
-}
-
-/* Ensure proper font sizes on mobile */
-@media (max-width: 767.98px) {
-    .navbar-brand {
-        font-size: 18px;
-    }
-    
-    .navbar-dark .navbar-nav .nav-link {
-        font-size: 16px;
-    }
+h4{
+    text-align:center;
 }

@@ -3,7 +3,6 @@
 *** Gest_morance.php: Gestione delle Morance
 *** 
 *** 11/3/2020: A.Carlone: migliorata gestione zone e ordinamento su id e nome moranca
-*** 27/02/20 : Gobbi: Implementazione della gestione multilingue
 *** 2/2/2020: A. Carlone: prima implementazione
 */
 $config_path = __DIR__;
@@ -16,10 +15,6 @@ require_once $util2;
 setup();
 isLogged("gestore");
 unsetPag(basename(__FILE__));
-
-$lang=isset($_SESSION['lang'])?$_SESSION['lang']:"ITA";
-$jsonFile=file_get_contents("../gestione_lingue/translations.json");//Converto il file json in una stringa
-$jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la salvo in un oggetto
 
 if(isset($_SESSION['errore']) && $_SESSION['errore']=='error'){echo "<script>alert('Esistono case nella moranca: impossibile cancellare')</script>";
                                                               }
@@ -175,7 +170,7 @@ $_SESSION['errore']=null;
                 echo "<option value='".$row["COD"]."'>".$row["NOME"]."</option>";
         }
         echo "</select>";
-        echo " <input type='submit' class='button' value='". $jsonObj->{$lang."Morance"}[4]."'>";//Conferma
+        echo " <input type='submit' class='button' value='Conferma'>";
         echo " </form>";
 		echo " </div>";
 		
@@ -259,10 +254,10 @@ $_SESSION['errore']=null;
 
             echo "<th> sulla mappa";
             echo "<th>data inizio val";//data_val
-            echo "<th>".$jsonObj->{$lang."Morance"}[9]."</th>";//Modifica
-            echo "<th>".$jsonObj->{$lang."Morance"}[10]."</th>";//Elimina
-            echo "<th>".$jsonObj->{$lang."Morance"}[11]."</th>";//Case
-            echo "<th>Storico";//Storico
+            echo "<th>Modifica</th>";
+            echo "<th>Elimina</th>";
+            echo "<th>Case</th>";
+            echo "<th>Storico</th>";
 
             echo "</tr>";
 

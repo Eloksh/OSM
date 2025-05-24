@@ -15,40 +15,32 @@ define("KO", -1);
 
 function stampaNavbar()
 {
-    //echo getcwd();
-
-    $lang=isset($_SESSION['lang'])?$_SESSION['lang']:"ITA"; //Se nessuna lingua è stata scelta,verrà messa come default quella italiana
-    $lang= strtoupper($lang);
-    $jsonFile=file_get_contents(__DIR__ ."/gestione_lingue/translations.json");//Converto il file json in una stringa
-    $jsonObj=json_decode($jsonFile);//effettuo il decode della stringa json e la salvo in un oggetto
 ?>
 <ul>
  <li class="titolo"><a href="/OSM/Anagrafe/index.php"><b>Nague<br> AnagrafeWEB<br></a></li>           
  <?php
  if (login())
-   {
+ {
     if($_SESSION['tipo']!="utente")
-	 {
+    { 
  ?>   
     <li><a href="/OSM/Anagrafe/morance/gest_morance.php">Moran&ccedil;as<br><IMG SRC="/OSM/Anagrafe/img/moranca4.png" WIDTH="50" HEIGHT="40"></a></li>
-    <li><a href="/OSM/Anagrafe/case/gest_case.php"><?php echo ($jsonObj->{$lang."Navbar"}[4])?><br><IMG SRC="/OSM/Anagrafe/img/casa4.png" WIDTH="50" HEIGHT="40"></a></li><!--Case --> 
-    <li><a href="/OSM/Anagrafe/persone/gest_persone.php"><?php echo ($jsonObj->{$lang."Navbar"}[5])?><br><i class='fa fa-male  fa-2x'></i><i class='fa fa-female  fa-2x'></i><i class='fa fa-male'></i><i class='fa fa-female'></i></a></li><!--Persone --> 
+    <li><a href="/OSM/Anagrafe/case/gest_case.php">Case<br><IMG SRC="/OSM/Anagrafe/img/casa4.png" WIDTH="50" HEIGHT="40"></a></li>
+    <li><a href="/OSM/Anagrafe/persone/gest_persone.php">Persone<br><i class='fa fa-male  fa-2x'></i><i class='fa fa-female  fa-2x'></i><i class='fa fa-male'></i><i class='fa fa-female'></i></a></li>
     <li><a href="/OSM/Anagrafe/OSM/db2geojson.php" target='mapcase'> Mappa case<br><IMG SRC="/OSM/Anagrafe/img/casa4.png" WIDTH="50" HEIGHT="30"><i class='fa fa-globe  fa-2x'></i></a></li>
     <li><a href="https://www.openstreetmap.org/search?query=nague#map=17/11.95270/-15.48564" target="osm">OSM<br><i class='fa fa-globe  fa-2x'></i></a></li>
-
-    <?php
-      } ?>
-    <li><a href="/OSM/Anagrafe/stat/statistiche.php"><?php echo ($jsonObj->{$lang."Navbar"}[9])?><br><i class="fa fa-pie-chart  fa-2x"></i></a></li>
-    <?php  if($_SESSION['tipo']=="admin")
-	 {
-	  echo "<li><a href='/OSM/Anagrafe/utenti/gestione_utenti.php'>".$jsonObj->{$lang."Navbar"}[10]."<br><i class='fa fa-user  fa-2x'></i></a></li>";// Utenti
-
-     //echo "<li><a href='/OSM/Anagrafe/utility.php'>".$jsonObj->{$lang."Navbar"}[11]."</a></li>";
-     // echo "<li><a href='https://drive.google.com/file/d/1VOXNtxo_ULb5xbqlJeVmjNz9vhz2insi/view?usp=sharing' target=new>Segnalazioni</a></li>";
-    ?>
-    <?php
-      }  
-	?>
+<?php
+    } 
+?>
+    <li><a href="/OSM/Anagrafe/stat/statistiche.php">Statistiche<br><i class="fa fa-pie-chart  fa-2x"></i></a></li>
+<?php  
+    if($_SESSION['tipo']=="admin")
+    {
+?>
+    <li><a href='/OSM/Anagrafe/utenti/gestione_utenti.php'>Utenti<br><i class='fa fa-user  fa-2x'></i></a></li>
+<?php
+    }  
+?>
     <li><div class="droppdown">
     <button class="droppbtn">
     <?php echo $_SESSION['nome']; ?>
@@ -60,17 +52,17 @@ function stampaNavbar()
     </div>
     </div></li>
 
-    <?php
-    }
-    else
-    {
-    ?>
-    <li><a href="/OSM/Anagrafe/info/chisiamo.php"><?php echo ($jsonObj->{$lang."Navbar"}[0])?></a></li><!--Chi siamo --> 
-    <li><a href="/OSM/Anagrafe/info/progetto.php"><?php echo ($jsonObj->{$lang."Navbar"}[1])?></a></li><!--Il progetto --> 
-    <li><a href="/OSM/Anagrafe/login.php"><IMG SRC="/OSM/Anagrafe/img/ico-login.png" WIDTH='40' HEIGHT='35' BORDER='0'ALT="Entra"></a></li> <!--Entra -->      
+<?php
+}
+else
+{
+?>
+    <li><a href="/OSM/Anagrafe/info/chisiamo.php">Chi siamo</a></li> 
+    <li><a href="/OSM/Anagrafe/info/progetto.php">Il progetto</a></li> 
+    <li><a href="/OSM/Anagrafe/login.php"><IMG SRC="/OSM/Anagrafe/img/ico-login.png" WIDTH='40' HEIGHT='35' BORDER='0' ALT="Entra"></a></li>
 </ul>
 <?php
-    }	 
+}
 ?>
 </ul>
 <script>
@@ -301,8 +293,6 @@ function isLogged($perm_rich=null)
 
  }
 
-
-
 /***************** Alert *********************/
 
 function alert($msg)
@@ -317,7 +307,6 @@ function EchoMessage($msg, $redirect)
     window.location.href = "'.$redirect.'"
     </script>';
  }
-
 
 /***************** my_random_bytes (usato per il Salt) *********************/
 

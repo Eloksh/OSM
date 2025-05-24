@@ -4,6 +4,7 @@
     margin-bottom: 30px;
     border-bottom: 1px solid #dee2e6;
 }
+
 .stats-section {
     margin-bottom: 40px;
     background-color: #fff;
@@ -37,12 +38,6 @@
 .nav-link-custom:hover {
     color: #0056b3;
     text-decoration: underline;
-   
-}
-
-nav{
-    width: 1000px;
-    text-align:left;
 }
 
 .summary-item {
@@ -59,7 +54,7 @@ nav{
 .summary-value {
     font-size: 22px;
     font-weight: 600;
-    color: #198754;
+    color: #286d4d;
 }
 
 .card-header.bg-secondary.text-white.text-center.py-2,

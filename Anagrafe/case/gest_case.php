@@ -1,7 +1,7 @@
 <?php
 /* Autore:Ferraiuolo
 *** Descrizione:Gestione delle case
-*** 13/03/2020  Carlone: modificata la query (per visualizzare anche se non c'è il capo famiglia)
+*** 13/03/2020  Carlone: modificata la query (per visualizzare anche se non c'ï¿½ il capo famiglia)
 *** 11/03/2020 Ferraiuolo  Modifica:aggiunta visualizzazione della casa con relativo zoom in caso si passi 
 *** con il cursore sopra
 ***29/03/2020: Ferraiuolo: aggiunta del div modal,script js per creare lo zoom quando si clicca sulla foto della casa
@@ -114,7 +114,7 @@ isLogged("gestore");
          <?php
 		 $x_pag = 10;			// n. di record per pagina
 		 $ricerca= false;
-         if(isset($_POST['ricerca']))		// se è stata richiesta la ricerca, recupera la pagina da visualizzare
+         if(isset($_POST['ricerca']))		// se ï¿½ stata richiesta la ricerca, recupera la pagina da visualizzare
 		   {
             $pag = get_first_pag($conn, $_POST['nome'], $cod_zona,  $ord, $campo); 
 			$ricerca = true;
@@ -259,13 +259,13 @@ isLogged("gestore");
 				$myclass = "fa fa-arrow-circle-down";
 			else
 				$myclass = "fa fa-arrow-circle-up";
-			//nome casa  (con possibilità di ordinamento)
+			//nome casa  (con possibilitï¿½ di ordinamento)
 
 			echo " <form method='post' action='gest_case.php'>";
             echo "<th> nome <button class='btn center-block'  name='ord_nome'  value='nome' type='submit'><i class='".$myclass ."' title ='inverti ordinamento'></i> </button> </th></form>";
  
 
-            //id (con possibilità di ordinamento)
+            //id (con possibilitï¿½ di ordinamento)
             echo " <form method='post' action='gest_case.php'>";
             echo "<th> id <button class='btn center-block'  name='ord_id'  value='id' type='submit'><i class='".$myclass ."' title ='inverti ordinamento'></i>  </button> </th></form>";
             
@@ -311,7 +311,7 @@ isLogged("gestore");
                 $row2 = $result2->fetch_array();
                 echo "<td>$row2[persone]</th>";
 				
-				if (($row['id_osm'] != null) && ($row['id_osm'] != "0"))	// priorità a id_osm
+				if (($row['id_osm'] != null) && ($row['id_osm'] != "0"))	// prioritï¿½ a id_osm
                  { 
 				  $osm_link = "https://www.openstreetmap.org/way/$row[id_osm]";
                   echo "<td>$row[id_osm]<a href=$osm_link target=new><img src='../img/marker.png' ></a></td>"; 

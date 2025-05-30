@@ -1,3 +1,11 @@
+/* CSS esistente */
+body {
+    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 35;
+    line-height: 1.6;
+}
 .chart-container {
     margin-bottom: 30px;
     border-radius: 8px;
@@ -5,18 +13,140 @@
     padding: 15px;
     background-color: #fff;
 }
+
 .stats-header {
     background-color: #f8f9fa;
     padding: 20px 0;
     margin-bottom: 30px;
     border-bottom: 1px solid #dee2e6;
 }
+
 .action-buttons {
     margin: 20px 0;
 }
+
 .btn-stat {
     margin-right: 10px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    padding: 5px 0  5px;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
 }
+
 .card-header.bg-primary.text-white{
     margin-top: 5px;
+}
+
+h4{
+    text-align:center;
+}
+
+/* NUOVE AGGIUNTE per layout migliorato */
+
+/* Effetti hover sui bottoni */
+.btn-stat:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-primary.btn-stat:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-success.btn-stat:hover {
+    background-color: #218838;
+    border-color: #218838;
+}
+
+/* Layout responsive per i bottoni */
+@media (max-width: 768px) {
+    .action-buttons .col-lg-3,
+    .action-buttons .col-md-6 {
+        margin-bottom: 10px;
+    }
+    
+    .btn-stat {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}
+
+/* Miglioramenti per i grafici */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row.g-3 {
+    --bs-gutter-x: 1rem;
+    --bs-gutter-y: 1rem;
+}
+
+.col-md-6 {
+    flex: 0 0 auto;
+    width: 50%;
+}
+
+/* Responsive per grafici */
+@media (max-width: 768px) {
+    .col-md-6 {
+        width: 100%;
+    }
+    
+    .chart-container {
+        margin-bottom: 20px;
+    }
+}
+
+/* Miglioramenti per le card del riassunto */
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header.bg-primary {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+    border: none;
+    padding: 15px 20px;
+}
+
+.card.bg-light {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    border: 1px solid #dee2e6;
+    transition: transform 0.2s ease;
+}
+
+.card.bg-light:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Miglioramenti per i titoli */
+.stats-header h1 {
+    color: #505050;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.stats-header .lead {
+    color: #000000;
+    font-size: 1.1rem;
+}
+
+/* Spacing migliorato */
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Fix per CanvasJS */
+.chart-container canvas {
+    max-width: 100% !important;
+    height: auto !important;
 }

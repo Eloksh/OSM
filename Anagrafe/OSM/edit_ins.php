@@ -146,7 +146,7 @@ if ($ID != "" && $lon != "" && $lat != "") {
                  $myMoranca = utf8_encode ($row['nome_moranca']) ;
                  if ($myCapoFam=="")
                		  $myCapoFam = "Non Esiste";
-                 echo "<option value=".$row['id_casa'].">casa (id:". $row['id_casa'].")-nome:".$nome_casa." (capo famiglia:".$myCapoFam. ") - moranca:".$myMoranca."  </option>";  					 
+                 echo "<option value=".$row['id_casa'].">casa (id". $row['id_casa'].")-nome".$nome_casa." (capo famiglia".$myCapoFam. ") - moranca".$myMoranca."  </option>";  					 
                 }
 				echo "<input type='submit' value='Scegli'>";
 			    echo "</select><br>";
@@ -168,7 +168,7 @@ if ($ID != "" && $lon != "" && $lat != "") {
 
     $verified = $pointsarray["features"][$i]["properties"]["verified"];
     if ($ID == "new") $verified = "";
-       print '<b>Ultima modifica:</b><br>';
+       print '<b>Ultima modifica</b><br>';
 
     print '<input type="text" class="onlyread" name="verified" value="'.$verified.'" readonly="readonly"><br>';
 	

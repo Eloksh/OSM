@@ -28,7 +28,6 @@ isLogged();
     $util = $config_path . '/../db/db_conn.php';
     require $util;
 
-
     // età media della popolazione
     $query = "SELECT AVG(TIMESTAMPDIFF(YEAR, DATA_NASCITA, CURDATE())) AS eta_media FROM persone WHERE DATA_NASCITA IS NOT NULL";
     $result = $conn->query($query);
@@ -159,16 +158,24 @@ UNION select persone_sto.ID as ID,persone_sto.NOMINATIVO as NOMI from persone_st
             <p class="lead">Analisi demografica della popolazione</p>
         </div>
 
+        <!-- Bottoni affiancati -->
         <div class="action-buttons">
-            <a href='statistiche_det.php' class="btn btn-primary btn-stat">
-                <i class="fa fa-info-circle"></i> Dettaglio Statistiche
-            </a>
-            <a href='statistiche_zona.php' class="btn btn-success btn-stat">
-                <i class="fa fa-chart-pie"></i> Statistiche per zona
-            </a>
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-2">
+                    <a href='statistiche_det.php' class="btn btn-primary btn-stat w-100">
+                        <i class="fa fa-info-circle"></i> Dettaglio Statistiche
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-2">
+                    <a href='statistiche_zona.php' class="btn btn-success btn-stat w-100">
+                        <i class="fa fa-chart-pie"></i> Statistiche per zona
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <div class="row">
+        <!-- Grafici affiancati -->
+        <div class="row g-3">
             <div class="col-md-6">
                 <div class="chart-container" id="chartContainer1" style="height: 300px;"></div>
             </div>
@@ -177,7 +184,7 @@ UNION select persone_sto.ID as ID,persone_sto.NOMINATIVO as NOMI from persone_st
             </div>
         </div>
 
-        <div class="row mt-4">
+        <div class="row g-3 mt-2">
             <div class="col-md-6">
                 <div class="chart-container" id="chartContainer3" style="height: 300px;"></div>
             </div>

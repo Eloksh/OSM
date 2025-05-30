@@ -45,13 +45,20 @@ WHERE DATA_morte IS NOT NULL;
             <p class="lead">Analisi demografica dettagliata</p>
         </div>
         
+        <!-- Sostituisci questa sezione nel tuo codice PHP -->
         <div class="action-buttons">
-            <a href='morti.php' class="btn btn-primary btn-stat">
-                <i class="fa fa-info-circle"></i> Statistiche decessi
-            </a>
-            <a href='statistiche_zona.php' class="btn btn-success btn-stat">
-                <i class="fa fa-chart-pie"></i> Statistiche per zona
-            </a>
+            <div class="row justify-content-center">
+                <div class="col-md-3 col-sm-6 mb-2">
+                    <a href='morti.php' class="btn btn-primary btn-stat w-100">
+                        <i class="fa fa-info-circle"></i> Statistiche decessi
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-2">
+                    <a href='statistiche_zona.php' class="btn btn-success btn-stat w-100">
+                        <i class="fa fa-chart-pie"></i> Statistiche per zona
+                    </a>
+                </div>
+            </div>
         </div>
 
         <?php
@@ -302,28 +309,30 @@ WHERE DATA_morte IS NOT NULL;
     </div>
 </div>
         
-        <!-- Statistiche complessive -->
+        <!-- Statistiche complessive con card stilizzate -->
         <div class="stats-section">
-            <h2><i class="fa fa-chart-line"></i> Statistiche complessive</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="summary-item text-center">
-                        <h4>Abitanti per casa</h4>
-                        <div class="summary-value"><?php echo (ceil($persone_casa * 10)) / 10; ?></div>
-                    </div>
+            <div class="demographic-header">
+                <h2><i class="fa fa-chart-line"></i> Riassunto Dati Demografici</h2>
+            </div>
+            
+            <div class="cards-container">
+                <div class="demographic-card">
+                    <div class="demographic-card-title">Popolazione Totale</div>
+                    <div class="demographic-card-value"><?php echo $numero_persone; ?></div>
                 </div>
-                <div class="col-md-4">
-                    <div class="summary-item text-center">
-                        <h4>Età media della popolazione</h4>
-                        <div class="summary-value"><?php echo $etamedia ?> anni</div>
-                    </div>
+
+                <div class="demographic-card">
+                    <div class="demographic-card-title">Età Media</div>
+                    <div class="demographic-card-value"><?php echo $etamedia; ?></div>
+                    <div class="demographic-card-unit">anni</div>
                 </div>
-                <div class="col-md-4">
-                    <div class="summary-item text-center">
-                        <h4>Persone decedute dall'inizio</h4>
-                        <div class="summary-value"><?php echo $morti; ?></div>
-                    </div>
+
+                <div class="demographic-card">
+                    <div class="demographic-card-title">Abitanti per Casa</div>
+                    <div class="demographic-card-value"><?php echo number_format((ceil($persone_casa * 10)) / 10, 1); ?></div>
                 </div>
+            </div>
+        
             </div>
             
             <!-- Dati demografici aggiuntivi -->

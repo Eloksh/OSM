@@ -60,7 +60,7 @@ if ($result)
   else
    {
     $mymsg = "Errore inserimento moranca: ";
-	$mymsg .= $conn-error;
+	$mymsg .= $conn->error;
 	
 	$conn->close();
 	EchoMessage($mymsg, "gest_morance.php");

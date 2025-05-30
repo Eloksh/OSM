@@ -23,12 +23,13 @@ body {
     background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%); /* Sfumatura leggera di sfondo */
     font-family: 'Roboto', 'Segoe UI', sans-serif;                 /* Font moderni sans-serif */
     padding-bottom: 50px;                                          /* Spazio in fondo alla pagina */
-    min-height: 100vh;                                             /* Altezza minima al 100% */
+    min-height: 100vh;/* Altezza minima al 100% */
 }
 
 /* Limitazione larghezza contenitore per migliorare la leggibilità */
 .container {
     max-width: 1200px;
+  
 }
 
 
@@ -87,8 +88,9 @@ body {
  * Stile del modulo filtro
  * Contenitore tipo "card" con bordo superiore colorato
  */
+
 .filter-form {
-    background-color: white;
+    background-color: #ffffff;
     padding: 25px;
     border-radius: 10px;
     margin-bottom: 30px;
@@ -106,6 +108,7 @@ body {
  * Stile degli input
  * Input arrotondati con ombre leggere
  */
+
 .form-control {
     border-radius: 20px;
     padding: 10px 20px;
@@ -146,7 +149,7 @@ body {
 }
 
 /* 
- * Stile della paginazione
+ * Stile della paginazione ( numeri in fondo)
  * Paginazione centrata con elementi interattivi
  */
 .pagination {
@@ -161,11 +164,11 @@ body {
     box-shadow: 0 2px 5px rgba(52, 152, 219, 0.3);
 }
 
-/* Stile dei link di pagina */
+/* Stile dei link di pagina (numeri)*/
 .pagination .page-link {
     color: var(--primary-color);
     border-radius: 5px;
-    margin: 0 3px;
+    margin: 0 5px;
     transition: all 0.3s ease;
 }
 
@@ -193,6 +196,7 @@ body {
  * Stile dei badge
  * Etichette per indicare stati
  */
+
 .badge {
     padding: 8px 12px;
     border-radius: 30px;
@@ -245,6 +249,7 @@ body {
  * Stile degli avvisi
  * Componente di notifica
  */
+
 .alert {
     border-radius: 10px;
     box-shadow: 0 5px 15px var(--shadow-color);
@@ -256,6 +261,7 @@ body {
  * Effetto hover sulle righe della tabella
  * Spostamento orizzontale leggero
  */
+
 .login-table tbody tr {
     transition: transform 0.3s ease;
 }

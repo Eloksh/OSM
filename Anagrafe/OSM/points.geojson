@@ -204,6 +204,28 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    -15.4855,
+                    11.9498
+                ]
+            },
+            "properties": {
+                "name": "14",
+                "tag": "NORD",
+                "verified": "25\/05\/2025",
+                "description": {
+                    "id OSM": "1381315804",
+                    "Nome Casa": "CASA 14",
+                    "Moranca": "ANDAME",
+                    "Capo Famiglia": "Musa  Buasat",
+                    "Numero Persone": "4"
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     -15.4877,
                     11.9521
                 ]
@@ -240,6 +262,28 @@
                     "Moranca": "ANDAME",
                     "Capo Famiglia": "Sumbique  Quimor",
                     "Numero Persone": "18"
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -15.4853,
+                    11.9499
+                ]
+            },
+            "properties": {
+                "name": "17",
+                "tag": "NORD",
+                "verified": "25\/05\/2025",
+                "description": {
+                    "id OSM": "1381315800",
+                    "Nome Casa": "CASA 17",
+                    "Moranca": "ANHINANE",
+                    "Capo Famiglia": "Lona  Nhass\u00c3\u00a9",
+                    "Numero Persone": "7"
                 }
             }
         },
@@ -372,6 +416,28 @@
                     "Moranca": "AFANDA",
                     "Capo Famiglia": "Cumba  Buota",
                     "Numero Persone": "2"
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -15.4855,
+                    11.9497
+                ]
+            },
+            "properties": {
+                "name": "33",
+                "tag": "NORD",
+                "verified": "25\/05\/2025",
+                "description": {
+                    "id OSM": "1381315804",
+                    "Nome Casa": "CASA 33",
+                    "Moranca": "ABODNA",
+                    "Capo Famiglia": "Tchongo N\u00c3\u0082\u00e2\u0080\u0099Cuass\u00c3\u0083\u00c2\u00a9",
+                    "Numero Persone": "5"
                 }
             }
         },

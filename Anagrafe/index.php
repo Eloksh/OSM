@@ -35,7 +35,7 @@ setup();
                 
                 <div class="main-title mb-4">
                     <h1 class="display-5">Anagrafe Web e Mappa OpenStreetMap di moranças, case e strade <br> del villaggio Nague (Guinea Bissau)</h1>
-                    <h2 class="subtitle">Progetto rimodernizzato da <strong>Eloksh Basel e Codreanu Stefan</strong> </h2>
+                    <h2 class="subtitle">Progetto rimodernizzato da<strong style="padding-left: 10px">Eloksh Basel e Codreanu Stefan</strong> </h2>
                 </div>
                 
                 <div class="main-image-container mt-4 mb-5">

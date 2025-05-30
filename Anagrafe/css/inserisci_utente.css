@@ -1,64 +1,145 @@
 body {
     background: linear-gradient(to right, #f0f4f7, #e2eafc);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 2rem;
+}
+
+.container {
+    max-width: 750px;
+    margin-top: 2rem;
 }
 
 .card {
     background-color: #ffffff;
     border: none;
-    border-radius: 1.5rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-}
-
-.card:hover {
-    transform: scale(1.01);
+    border-radius: 0.75rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    padding: 2rem;
 }
 
 h2 {
     font-weight: 600;
     color: #2c3e50;
-}
-
-i.bi.bi-info-circle.info-icon::before{
-    margin-top:10px;
+    margin-bottom: 1.5rem;
 }
 
 .btn-primary {
     background-color: #007bff;
     border-color: #007bff;
     font-weight: 500;
-    padding: 0.5rem 1.5rem;
-    border-radius: 30px;
-    transition: all 0.3s ease-in-out;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 1rem;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
+    background-color: #0069d9;
+    border-color: #0062cc;
+    transform: translateY(-1px);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
 }
 
-.form-text {
-    font-size: 0.875rem;
-    color: #6c757d;
-}
-
-label {
+.form-label {
     font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    color: #495057;
 }
 
-input, select {
-    border-radius: 10px !important;
+.form-control, .form-select {
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease;
 }
 
-.password-container i {
-    position: absolute;
-    right: 15px;
+.form-control:focus, .form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+/* Stile per i campi password */
+.password-field {
+    margin-bottom: 1.25rem;
+}
+
+.input-container {
+    position: relative;
+}
+
+i.bi.bi-info-circle.info-icon.ms-2::before{
+    margin-bottom:10px;
+}
+
+/* Icona info */
+.info-icon {
+    color: #6c757d;
+    font-size: 1rem;
+    margin-left: 0.5rem;
     cursor: pointer;
-    color: #000000;
-    transition: color 0.3s;
+    transition: all 0.2s ease;
 }
 
-.password-container i:hover {
-    color: #ce1126;
+.info-icon:hover {
+    color: #17a2b8;
+    transform: scale(1.1);
+}
+
+/* Icona occhio */
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    font-size: 1.25rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    transition: all 0.2s ease;
+}
+
+.toggle-password:hover {
+    color: #007bff;
+}
+
+/* Messaggio di errore */
+#error {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #dc3545;
+}
+
+/* Tooltip personalizzato */
+.tooltip {
+    --bs-tooltip-bg: #495057;
+}
+
+.tooltip-arrow {
+    display: none;
+}
+
+.tooltip-inner {
+    max-width: 300px;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    background-color: var(--bs-tooltip-bg);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .card {
+        padding: 1.5rem;
+    }
 }

@@ -36,7 +36,8 @@ body {
 }
 
 .stat-links {
-    margin: 15px 0;
+    margin: 15px 20px;
+    justify-content:space-around;
 }
 
 .stat-links a {

@@ -27,6 +27,21 @@ isLogged("amministratore");
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/OSM/Anagrafe/css/areap.css">
+    <style>
+        .info-icon-orange {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background-color: orange;
+            border-radius: 50%;
+            color: white;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+    </style>
 </head>
 
 <body class="bg-light">
@@ -94,28 +109,37 @@ isLogged("amministratore");
                             <form name="form" id="form" action="area_personale.php" method="POST" class="mt-4">
                                 <div class="mb-3 row">
                                     <label for="pswOld" class="col-sm-4 col-form-label">Password attuale:</label>
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-8 input-group">
                                         <input type="password" class="form-control" id="pswOld" name="pswOld" required>
+                                        <span class="input-group-text toggle-password" data-target="pswOld">
+                                            <i class="fas fa-eye"></i>
+                                        </span>
                                     </div>
                                 </div>
                                 
                                 <div class="mb-3 row">
-                                    <label for="pswNew1" class="col-sm-4 col-form-label">Nuova password:</label>
-                                    <div class="col-sm-8 position-relative">
+                                    <label for="pswNew1" class="col-sm-4 col-form-label">
+                                        Nuova password:
+                                         <!-- colore info da rivedere-->
+                                        <span class="info-icon-orange" data-bs-toggle="modal" data-bs-target="#passwordRequirementsModal">
+                                            <i class="fas fa-info"></i>
+                                        </span>
+                                    </label>
+                                    <div class="col-sm-8 input-group">
                                         <input type="password" class="form-control" id="pswNew1" name="pswNew1" required>
-                                        <i 
-                                            class="fas fa-info-circle ms-2" 
-                                            style="cursor: pointer;" 
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#passwordRequirementsModal"
-                                        ></i>
+                                        <span class="input-group-text toggle-password" data-target="pswNew1">
+                                            <i class="fas fa-eye"></i>
+                                        </span>
                                     </div>
                                 </div>
                                 
                                 <div class="mb-3 row">
                                     <label for="pswNew2" class="col-sm-4 col-form-label">Ripeti password:</label>
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-8 input-group">
                                         <input type="password" class="form-control" id="pswNew2" name="pswNew2" required>
+                                        <span class="input-group-text toggle-password" data-target="pswNew2">
+                                            <i class="fas fa-eye"></i>
+                                        </span>
                                     </div>
                                 </div>
                                 
@@ -194,44 +218,79 @@ isLogged("amministratore");
         </div>
     </div>
     
-    <!-- Modal per i requisiti della password -->
-    <div class="modal fade" id="passwordRequirementsModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Requisiti della password</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    La password deve avere:
-                    <ul>
-                        <li>Almeno <strong>8 caratteri</strong></li>
-                        <li>Almeno <strong>1 carattere maiuscolo</strong> (A-Z)</li>
-                        <li>Almeno <strong>1 carattere minuscolo</strong> (a-z)</li>
-                        <li>Almeno <strong>1 numero</strong> (0-9)</li>
-                        <li>Almeno <strong>1 carattere speciale</strong> (es. !@#$%)</li>
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ho capito</button>
-                </div>
+<!-- Modal per i requisiti della password -->
+<div class="modal fade" id="passwordRequirementsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Requisiti della password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                La password deve avere:
+                <ul class="list-unstyled">
+                    <li>Almeno <strong>8 caratteri</strong></li>
+                    <li>Almeno <strong>1 carattere maiuscolo</strong> (A-Z)</li>
+                    <li>Almeno <strong>1 carattere minuscolo</strong> (a-z)</li>
+                    <li>Almeno <strong>1 numero</strong> (0-9)</li>
+                    <li>Almeno <strong>1 carattere speciale</strong> (es. !@#$%)</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ho capito</button>
             </div>
         </div>
     </div>
+</div>
     
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <script>
-        $(document).ready(function() {
-            // Form validation
-            $("#form").submit(function(event) {
-                if ($("#pswNew1").val() !== $("#pswNew2").val()) {
-                    alert("Le password non corrispondono!");
-                    event.preventDefault();
-                }
-            });
+   <!-- Alla fine del body, prima della chiusura </body> -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Toggle password visibility
+    document.querySelectorAll('.toggle-password').forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const target = this.dataset.target;
+            const input = document.getElementById(target);
+            const icon = this.querySelector('i');
+            
+            if (input) {
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
+                icon.classList.toggle('fa-eye');
+                icon.classList.toggle('fa-eye-slash');
+            }
         });
-    </script>
+    });
+
+    // Form validation
+    const form = document.getElementById('form');
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            const psw1 = document.getElementById('pswNew1');
+            const psw2 = document.getElementById('pswNew2');
+            
+            if (psw1 && psw2 && psw1.value !== psw2.value) {
+                alert("Le password non corrispondono!");
+                event.preventDefault();
+            }
+        });
+    }
+
+    // Modal handling
+    const infoIcons = document.querySelectorAll('.fa-info-circle');
+    infoIcons.forEach(icon => {
+        icon.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    });
+});
+
+ // Remove any existing window.onclick handlers that might conflict
+        window.onclick = null
+</script>
+   
 </body>
 </html>

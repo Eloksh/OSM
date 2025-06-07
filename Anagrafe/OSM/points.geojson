@@ -380,6 +380,28 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    -15.4849,
+                    11.9493
+                ]
+            },
+            "properties": {
+                "name": "24",
+                "tag": "NORD",
+                "verified": "01\/06\/2025",
+                "description": {
+                    "id OSM": "1381315806",
+                    "Nome Casa": "CASA 24",
+                    "Moranca": "AFANDA",
+                    "Capo Famiglia": "Bisentchate  Quifug",
+                    "Numero Persone": "10"
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     -15.4866,
                     11.9517
                 ]

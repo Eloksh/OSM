@@ -32,14 +32,12 @@ body {
   
 }
 
-
 /* Stile del testo dell’intestazione */
 .login-header h2 {
     font-weight: 300;
     letter-spacing: 1px;
     text-transform: uppercase;
     position: relative;
-    margin-top: 30px;
     margin-bottom: 15px;
     z-index: 1; /* Mantiene il testo sopra all’elemento pseudo */
 }

@@ -11,6 +11,7 @@
 body {
     background-color: var(--light-bg);
     color: var(--dark-text);
+    padding:0;
     font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
 }
 
@@ -110,7 +111,6 @@ iframe {
     }
 }
 
-/* Bootstrap button enhancement */
 .btn-primary {
     background-color: var(--primary-color);
     border-color: var(--primary-color);

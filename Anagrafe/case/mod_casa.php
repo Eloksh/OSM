@@ -64,10 +64,12 @@ $id_capo_famiglia = $row["id_capo_famiglia"];
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
+            padding: 0;
+            margin: 0;
         }
         .page-header {
             background-color: white;
-            padding: 20px 0;
+            text-align: center;
             margin-bottom: 20px;
             border-bottom: 1px solid #dee2e6;
         }

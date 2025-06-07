@@ -218,6 +218,9 @@ unset($_SESSION['pag_p']);
                 modal.style.display = "none";
             }
         }
+
+          // Remove any existing window.onclick handlers that might conflict
+        window.onclick = null;
     </script>
 </body>
 </html>

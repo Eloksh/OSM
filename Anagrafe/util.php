@@ -15,7 +15,7 @@ define("KO", -1);
 function stampaNavbar()
 {
 ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top modern-navbar">
+<nav class="navbar navbar-expand-lg bg-primary fixed-top modern-navbar">
     <div class="container-fluid">
         <!-- Brand/Logo -->
         <a class="navbar-brand fw-bold brand-logo" href="/OSM/Anagrafe/index.php">

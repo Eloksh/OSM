@@ -45,8 +45,9 @@ function formatDate($dateString) {
             background-color: var(--light-bg);
             color: #212529;
             line-height: 1.6;
+            padding: 0;
+            margin: 0;
         }
-        
         .page-header {
             color: var(--secondary-color);
             padding-bottom: 0.5rem;
@@ -209,11 +210,15 @@ function formatDate($dateString) {
         ?>
         
         <div class="page-header">
-            <h1>Villaggio di NTchangue</h1>
-            <h2>Elenco case della morança: <?php echo htmlspecialchars($nome_moranca); ?> (ID=<?php echo htmlspecialchars($id_moranca); ?>)</h2>
+            <h1>Villaggio di Nague</h1>
         </div>
         
         <div class="card">
+            <h2 {
+            color: var(--secondary-color);
+        }}>Elenco case della morança: <?php echo htmlspecialchars($nome_moranca); ?> (ID=<?php echo htmlspecialchars($id_moranca); ?>)</h2 {
+            color: var(--secondary-color);
+        }}>
             <div class="card-header">
                 <h3 class="mb-0">Dettagli Case</h3>
             </div>

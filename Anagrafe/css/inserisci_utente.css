@@ -2,10 +2,11 @@ body {
     background: linear-gradient(to right, #f0f4f7, #e2eafc);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding-bottom: 2rem;
+    padding:25;
 }
 
 .container {
-    max-width: 750px;
+    max-width: 1000px;
     margin-top: 2rem;
 }
 

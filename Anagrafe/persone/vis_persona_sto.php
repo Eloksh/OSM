@@ -39,7 +39,7 @@ require_once $util2;
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <style>
         .container-main {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
             background-color: #f8f9fa;
@@ -47,7 +47,7 @@ require_once $util2;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         .section-title {
-            color: #0d6efd;
+            color:rgb(0, 0, 0);
             border-bottom: 2px solid #0d6efd;
             padding-bottom: 10px;
             margin-top: 30px;
@@ -76,6 +76,7 @@ require_once $util2;
         .table-hover tbody tr:hover {
             background-color: #e9f7ff;
         }
+        
         .pagination-container {
             margin: 20px 0;
             display: flex;
@@ -84,7 +85,7 @@ require_once $util2;
         .back-link {
             display: inline-block;
             margin-top: 20px;
-            color: #0d6efd;
+            color:rgb(50, 54, 61);
             text-decoration: none;
         }
         .back-link:hover {
@@ -328,6 +329,9 @@ require_once $util2;
                 }
             }
         }
+
+          // Remove any existing window.onclick handlers that might conflict
+        window.onclick = null;
     </script>
 </body>
 </html>

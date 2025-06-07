@@ -135,6 +135,8 @@ stampaIntestazione();
                 iconElement.classList.replace('bi-eye-slash', 'bi-eye');
             }
         }
+        //per correggere errori della console di chrome
+        window.onclick = null;
     </script>
 </body>
 </html>

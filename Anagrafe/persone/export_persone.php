@@ -36,6 +36,8 @@ require_once $util2;
         body {
             background-color: var(--light-bg);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            margin: 0;
         }
         
         .export-container {
@@ -154,9 +156,9 @@ require_once $util2;
     <div class="export-container">
         <?php stampaIntestazione(); ?>
         <?php stampaNavbar(); ?>
-        
-        <div class="export-card">
-            <h1 class="page-title">Villaggio di NTchangue</h1>
+
+        <h1 class="page-title">Villaggio di NTchangue</h1>
+        <div class="export-card">            
             <h2 class="section-title">Export su file Excel delle persone</h2>
             
             <form action="excel_persona.php" method="post">
@@ -232,6 +234,8 @@ require_once $util2;
                 fileInput.value = fileInput.value + '.xls';
             }
         });
+          // Remove any existing window.onclick handlers that might conflict
+        window.onclick = null;
     </script>
 </body>
 </html>

@@ -94,9 +94,9 @@ $nome_moranca = $row['nome_moranca'];
             
             <form method='POST' action='delete_moranca.php'>
                 <div class="btn-group">
-                    <input type='submit' class='btn btn-no' name='no' value='No'>
-                    <input type='submit' class='btn btn-si' name='si' value='Si'>
-                    <input type='hidden' name='id_mora' value='<?php echo $id_moranca; ?>'>
+                    <input type='submit' class='btn btn-no' name='no' value='no'>
+                    <input type='submit' class='btn btn-si' name='si' value='si'>
+                    <input type='hidden' name='id_moranca' value='<?php echo $id_moranca; ?>'>
                 </div>
             </form>
         </div>

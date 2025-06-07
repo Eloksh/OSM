@@ -192,6 +192,9 @@ $_SESSION["id_persona_modifica"] = $id_pers;
     }
     ?>
    </div>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+      // Remove any existing window.onclick handlers that might conflict
+        window.onclick = null;
+   </script>
 </body>
 </html>

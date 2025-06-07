@@ -79,14 +79,17 @@ isLogged("gestore");
             
             <form method='POST' action='delete_persona.php'>
                 <div class="btn-group">
-                    <input type='submit' class='btn btn-no' name='no' value='No'>
-                    <input type='submit' class='btn btn-si' name='si' value='Si'>
+                    <input type='submit' class='btn btn-no' name='no' value='no'>
+                    <input type='submit' class='btn btn-si' name='si' value='si'>
                     <input type='hidden' name='id_pers' value='<?php echo $id_pers; ?>'>
                 </div>
             </form>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+          // Remove any existing window.onclick handlers that might conflict
+        window.onclick = null;
+    </script>
 </body>
 </html>

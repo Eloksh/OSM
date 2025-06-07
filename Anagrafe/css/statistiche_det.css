@@ -9,6 +9,10 @@
     --danger-color: #f44336;     /* Rosso per errori */
 }
 
+body{
+    padding:0;
+}
+
 .stats-header {
     background-color: #f8f9fa;
     padding: 20px 0;

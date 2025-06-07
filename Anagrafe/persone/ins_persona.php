@@ -222,6 +222,9 @@ $ruoli_result = $conn->query("SELECT distinct cod, descrizione FROM ruolo_pers_f
             // Puoi aggiungere qui ulteriori validazioni se necessario
             console.log('Form validato con successo');
         });
+
+          // Remove any existing window.onclick handlers that might conflict
+        window.onclick = null;
     </script>
 </body>
 </html>

@@ -80,9 +80,9 @@ isLogged("gestore");
             
             <form method='POST' action='delete_casa.php'>
                 <div class="btn-group">
-                    <input type='submit' class='btn btn-no' name='no' value='No'>
-                    <input type='submit' class='btn btn-si' name='si' value='Si'>
-                    <input type='hidden' name='id_pers' value='<?php echo $id_casa; ?>'>
+                    <input type='submit' class='btn btn-no' name='no' value='no'>
+                    <input type='submit' class='btn btn-si' name='si' value='si'>
+                    <input type='hidden' name='id_casa' value='<?php echo $id_casa; ?>'>
                 </div>
             </form>
         </div>

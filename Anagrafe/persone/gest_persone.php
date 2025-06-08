@@ -15,7 +15,7 @@
 ***  9/4/2020: A.Carlone: visualizzazione deceduti
 *** 15/3/2020: A.Carlone: migliorata gestione zone e ordinamento su id e nome moranca
 *** 2/2/2020: A. Carlone: prima implementazione
-*** 05/06/2025: ELOKSH MODIFICA CSSs
+*** 05/06/2025: ELOKSH MODIFICA CSS e reso responsive
 */
 $config_path = __DIR__;
 $util1 = $config_path .'/../util.php';

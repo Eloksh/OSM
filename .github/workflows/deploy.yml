@@ -2,12 +2,12 @@ name: Deploy to Altervista
 
 on:
   push:
-    branches: [ master ]  # branch principale
+    branches: [ master ]  # ramo principale
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -19,8 +19,8 @@ jobs:
         username: nague
         password: ${{ secrets.FTP_PASSWORD }}
         port: 21
-        local-dir: ./
-        server-dir: /OSM/
+        local-dir: ./OSM           # Carica solo la cartella OSM
+        server-dir: /OSM           # Verso la destinazione corretta sul server
         exclude: |
           **/.git*
           **/.git*/**

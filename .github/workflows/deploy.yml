@@ -1,20 +1,23 @@
-name: Deploy to FTP
+name: FTP Deploy to Altervista
 
 on:
   push:
     branches:
-      - master
+      - master  # Usa "main" se il tuo branch principale si chiama così
 
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: FTP Deploy
+      - name: Upload via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          password: ${{ secrets.FTP_PASSWORD }}
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: /

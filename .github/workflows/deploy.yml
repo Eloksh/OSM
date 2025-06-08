@@ -1,14 +1,13 @@
-name: Deploy via FTP
+name: FTP Deploy
 
 on:
   push:
     branches:
-      - main
+      - master  # Avvia il deploy quando fai push su 'master'
 
 jobs:
   ftp-deploy:
-    runs-on: windows-latest
-
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3

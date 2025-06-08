@@ -1,0 +1,29 @@
+name: Deploy to Altervista
+
+on:
+  push:
+    branches: [ master ]  # o master, a seconda del tuo branch principale
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Deploy via FTP
+      uses: SamKirkland/FTP-Deploy-Action@4.3.3
+      with:
+        server: ftp.nague.altervista.org
+        username: nague
+        password: ${{ secrets.FTP_PASSWORD }}
+        port: 21
+        local-dir: ./  # cartella locale da caricare
+        server-dir: /  # cartella di destinazione su Altervista
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/.DS_Store
+          **/README.md

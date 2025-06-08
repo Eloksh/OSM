@@ -36,6 +36,14 @@ $id_casa = (int)$_POST['id_casa'];
             padding: 20px;
             background-color: #f8f9fa;
         }
+
+        div.header-info {
+            background-color: rgb(255, 255, 255);
+            padding: 15px;
+            border-radius: 5px;
+            border: black solid 0.1px;
+        }
+    
         .header-info {
             background-color:rgb(232, 232, 232);
             padding: 15px;

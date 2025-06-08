@@ -102,8 +102,9 @@ $_SESSION["id_persona_modifica"] = $id_pers;
         $matricola = $row['matricola'];
         $nominativo = utf8_encode($row['nominativo']);
         ?>
+         <h3>Modifica persona:</h3>
         <div class="form-container">
-            <h3>Modifica persona: <?php echo htmlspecialchars($nominativo); ?> (id= <?php echo $id_pers; ?>)</h3>
+        <h3><?php echo htmlspecialchars($nominativo); ?> (id= <?php echo $id_pers; ?>)</h3>
             <form action='modifica_persona.php' name='form' id='form' method='post'>
                 <div class="form-group">
                     <label for='nominativo' class="form-label">Nominativo:</label>

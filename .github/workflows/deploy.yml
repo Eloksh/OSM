@@ -2,16 +2,16 @@ name: Deploy to Altervista
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master ]  # branch principale
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-
+      
     - name: Deploy via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
@@ -20,7 +20,8 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         port: 21
         local-dir: ./
-        server-dir: /OSM/
+        server-dir: ./OSM/Anagrafe
+        dangerous-clean-slate: true
         exclude: |
           **/.git*
           **/.git*/**

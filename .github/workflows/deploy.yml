@@ -20,7 +20,7 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         port: 21
         local-dir: ./OSM/           # Carica solo la cartella OSM
-        server-dir: /OSM           # Verso la destinazione corretta sul server
+        server-dir: /OSM/           # Verso la destinazione corretta sul server
         exclude: |
           **/.git*
           **/.git*/**

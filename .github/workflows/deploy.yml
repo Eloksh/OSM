@@ -3,7 +3,7 @@ name: Deploy to Altervista via FTP
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   ftp-deploy:

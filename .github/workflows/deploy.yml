@@ -2,7 +2,7 @@ name: Deploy to Altervista
 
 on:
   push:
-    branches: [ master ]  # ramo principale
+    branches: [ master ]
 
 jobs:
   deploy:
@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      
+
     - name: Deploy via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
@@ -19,8 +19,8 @@ jobs:
         username: nague
         password: ${{ secrets.FTP_PASSWORD }}
         port: 21
-        local-dir: ./OSM/           # Carica solo la cartella OSM
-        server-dir: /OSM/           # Verso la destinazione corretta sul server
+        local-dir: ./
+        server-dir: /OSM/
         exclude: |
           **/.git*
           **/.git*/**

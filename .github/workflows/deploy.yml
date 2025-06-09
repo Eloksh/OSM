@@ -18,7 +18,7 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         port: 21
         local-dir: ./  # Prende TUTTO il progetto dalla root
-        server-dir: htdocs/  # Cartella principale di Altervista
+        server-dir: osm/  # Cartella principale di Altervista
         dangerous-clean-slate: true  # Sostituisce completamente il contenuto remoto
         exclude: |
           **/.git*

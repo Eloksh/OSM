@@ -4,7 +4,7 @@
 //Descrizione:Implementazione della gestione multilingue attraverso un file .json Autore:Gobbi Dennis
 //Descrizione:Gestione degli utenti Autore:Ferraiuolo Pasquale
 //25/03/2020: Ferraiuolo: Aggiunta menu a tendina e nome utente nella videata
-//Aggiornamento: Navbar resa responsive con Bootstrap
+//Aggiornamento: Navbar reso responsive con Bootstrap
 ?>
 <?php
 

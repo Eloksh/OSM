@@ -1,13 +1,11 @@
 name: Deploy to Altervista
-
 on:
   push:
-    branches: [ master ]  # branch principale
+    branches: [ master ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -19,12 +17,13 @@ jobs:
         username: nague
         password: ${{ secrets.FTP_PASSWORD }}
         port: 21
-        local-dir: ./
+        local-dir: ./  # Prende TUTTO il progetto dalla root
+        server-dir: htdocs/  # Cartella principale di Altervista
+        dangerous-clean-slate: true  # Sostituisce completamente il contenuto remoto
         exclude: |
           **/.git*
-          **/.git*/**
+          **/.github/**
           **/node_modules/**
           **/.DS_Store
           **/README.md
-          **/.github/**
-          **/package-lock.json
+          **/package*.json

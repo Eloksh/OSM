@@ -1,29 +1,29 @@
-name: Deploy to Altervista
+name: Deploy to Altervista (OSM)
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Deploy via FTP
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server: ftp.nague.altervista.org
-        username: nague
-        password: ${{ secrets.FTP_PASSWORD }}
-        port: 21
-        local-dir: ./  # Prende TUTTO il progetto dalla root
-        server-dir: osm/  # Cartella principale di Altervista
-        dangerous-clean-slate: true  # Sostituisce completamente il contenuto remoto
-        exclude: |
-          **/.git*
-          **/.github/**
-          **/node_modules/**
-          **/.DS_Store
-          **/README.md
-          **/package*.json
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftp.nague.altervista.org
+          username: nague
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          local-dir: ./OSM/
+          server-dir: OSM/
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/node_modules/**
+            **/.DS_Store
+            **/README.md
+            **/*.sql
+            **/php.ini

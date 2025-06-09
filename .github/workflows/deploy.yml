@@ -17,7 +17,7 @@ jobs:
           username: nague
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
-          local-dir: ./OSM/
+          local-dir: ./
           server-dir: OSM/
           exclude: |
             **/.git*
